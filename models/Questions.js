@@ -5,7 +5,6 @@ const QuestionSchema = mongoose.Schema({
   questionBody: { type: String, required: "Question must have a body" },
   codeSnippet: { type: String },
   videoLink: { type: String },
-  editorContent: { type: String },
   questionTags: { type: [String], required: "Question must have a tags" },
   noOfAnswers: { type: Number, default: 0 },
   upVote: { type: [String], default: [] },

@@ -13,7 +13,8 @@ export const getAllUsers = async (req, res) => {
         tags: user.tags,
         joinedOn: user.joinedOn,
         rewardPoints: user.rewardPoints,
-        badges: user.badges,
+        // badges: user.badges,
+        answersCount: user.answersCount,
       });
     });
     res.status(200).json(allUserDetails);

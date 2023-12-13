@@ -1,14 +1,13 @@
 import mongoose from "mongoose";
 import Questions from "../models/Questions.js";
 import User from "../models/auth.js"
+
 export const postAnswer = async (req, res) => {
   const { id: _id } = req.params;
   const { noOfAnswers, answerBody, userAnswered } = req.body;
   const userId = req.userId;
-  await User.findByIdAndUpdate(userId, { $inc: { badges: 1 } });
-  // await User.save()
+  await User.findByIdAndUpdate(userId, { $inc: { badges: 1, answersCount: 1, rewardPoints: 1 } });
   const user = await User.findById(userId)
-  await User.findByIdAndUpdate(userId, { $inc: { rewardPoints: user.badges * 2 } });
   if (!mongoose.Types.ObjectId.isValid(_id)) {
     return res.status(404).send("question unavailable...");
   }
